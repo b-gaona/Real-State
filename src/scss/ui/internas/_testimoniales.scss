@@ -1,0 +1,43 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.testimoniales {
+  margin: 5rem auto;
+  margin-top: 0;
+  
+  &__heading {
+    @include m.heading();
+    span {
+      display: block;
+    }
+  }
+}
+.testimonial {
+  &__imagen {
+    width: 60%;
+    margin: 0 auto -10rem auto;
+    max-width: 30rem;
+  }
+
+  &__contenido {
+    background-color: v.$blanco;
+    padding: 3rem;
+    padding-top: 10rem;
+  }
+  &__autor {
+    font-weight: 700;
+    font-size: 3rem;
+  }
+  &__texto {
+    text-align: center;
+    &::before {
+      display: inline-block;
+      content: "";
+      width: 4rem;
+      height: 3rem;
+      background-image: url(../img/quote.svg);
+      background-repeat: no-repeat;
+      margin-right: 1.5rem;
+    }
+  }
+}

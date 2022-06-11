@@ -1,0 +1,13 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.entrada {
+  @include m.grid(1, 0);
+
+  @include m.tablet {
+    @include m.grid(2, 5rem);
+  }
+  @include m.desktop{
+    grid-template-columns: 40% 55%;
+  }
+}

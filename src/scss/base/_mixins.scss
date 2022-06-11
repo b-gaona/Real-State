@@ -1,0 +1,98 @@
+@use "variables" as v;
+
+/** Media Queries **/
+@mixin telefono {
+  @media (min-width: v.$telefono) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: v.$tablet) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: v.$desktop) {
+    @content;
+  }
+}
+@mixin desktopXL {
+  @media (min-width: v.$desktopxl) {
+    @content;
+  }
+}
+
+@mixin boton($bgColor, $colorTexto) {
+  background-color: $bgColor;
+  padding: 1.5rem 4rem;
+  color: $colorTexto;
+  margin-top: 2rem;
+  font-size: 2rem;
+  font-weight: 400;
+  display: inline-block;
+  font-weight: 700;
+  border: none;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  text-align: center;
+
+  @include tablet {
+    width: auto;
+  }
+  &:hover {
+    background-color: darken($bgColor, 10%);
+  }
+}
+
+@mixin grid($columnas, $espaciado) {
+  display: grid;
+  gap: $espaciado;
+  grid-template-columns: repeat($columnas, 1fr);
+}
+
+@mixin scroll-horizontal() {
+  overflow-y: hidden;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  > * {
+    scroll-snap-align: center;
+  }
+}
+
+@mixin heading() {
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 3rem;
+  text-align: center;
+
+  @include tablet {
+    text-align: left;
+  }
+  span {
+    font-weight: 700;
+  }
+
+  &::after {
+    content: "";
+    display: none;
+    width: 15rem;
+    margin-top: 1rem;
+    height: 1rem;
+    background-image: linear-gradient(
+      to left,
+      v.$primario 0%,
+      v.$primario 50%,
+      v.$negro 50%,
+      v.$negro 100%
+    );
+
+    @include tablet {
+      display: block;
+    }
+    @include desktop {
+      width: 25rem;
+    }
+  }
+}
